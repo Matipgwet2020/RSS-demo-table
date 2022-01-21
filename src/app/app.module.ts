@@ -10,7 +10,9 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { TableauComponent } from './tableau/tableau.component';
+import { RssComponent } from './rss/rss.component';
+import { GrapheComponent } from './graphe/graphe.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { HttpClientModule } from '@angular/common/http';
     CreateEmployeeComponent,
     EmployeeDetailsComponent,
     EmployeeListComponent,
-    UpdateEmployeeComponent
+    UpdateEmployeeComponent,
+    TableauComponent,
+    RssComponent,
+    GrapheComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
 
   ],
   providers: [],

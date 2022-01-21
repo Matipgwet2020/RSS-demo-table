@@ -1,1 +1,8 @@
-H2 { text-align: center }
+H2 { text-align: center }H2 { text-align: center }
+
+.center {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  form {display: inline;}

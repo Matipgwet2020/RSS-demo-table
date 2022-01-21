@@ -1,26 +1,127 @@
-<h3>Create Employee</h3>
-<div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">First Name</label>
-      <input type="text" class="form-control" id="firstName" required [(ngModel)]="employee.firstName" name="firstName">
-    </div>
-
-    <div class="form-group">
-      <label for="name">Last Name</label>
-      <input type="text" class="form-control" id="lastName" required [(ngModel)]="employee.lastName" name="lastName">
-    </div>
-
-    <div class="form-group">
-      <label for="name">First Name</label>
-      <input type="text" class="form-control" id="emailId" required [(ngModel)]="employee.emailId" name="emailId">
-    </div>
-
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+<div class="center">
+  <ul class="nav nav-tabs" role="tablist">
+<li class="nav-item">
+   <a routerLink="/employees" class="nav-link" data-toggle="tab" routerLinkActive="active">Etape 1</a>
+</li>
+<li class="nav-item">
+   <a routerLink="/add" class="nav-link" data-toggle="tab" routerLinkActive="active">Etape 2</a>
+</li>
+</ul>
 </div>
+<hr>
 
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
-</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>120 Actif</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom CI</th>
+            <th>Email</th>
+            <th>Statut</th>
+            <th>Type</th>
+            <th>valeur1</th>
+            <th>valeur2</th>
+            <th>Numéro Série/license</th>
+            <th>Version</th>
+            <th>Site</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees | async">
+            <td>{{employee.id}}</td>
+            <td>{{employee.lastName + " " + employee.firstName }}</td>
+            <td>{{employee.emailId}}</td>
+            <td>{{employee.statut}}</td>
+            <td>{{employee.type}}</td>
+            <td>{{employee.valeur1}}</td>
+            <td>{{employee.valeur2}}</td>
+            <td>{{employee.licence}}</td>
+            <td>{{employee.version}}</td>
+            <td>{{employee.site}}</td>
+            <td>
+               <button (click)="deleteEmployee(employee.id)" class="btn btn-danger">
+                  <span class="oi oi-trash"></span>
+               </button>
+                <button (click)="updateEmployee(employee.id)" class="btn btn-info" style="margin-left: 4px">
+                  <span class="oi oi-pencil"></span>
+                </button>
+                <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 4px">
+                  <span class="oi oi-list"></span>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table> 
+      <div [hidden]="submitted" class="row">
+        <form class="form-inline" (ngSubmit)="onSubmit()">
+          <!-- <div class="col-md-1">
+            <input type="number" class="form-control" id="id" required [(ngModel)]="employee.id" name="id">
+          </div> -->
+
+          <div class="col-md-1">
+            <input type="text" class="form-control" id="firstName" required [(ngModel)]="employee.firstName" name="firstName">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="text" class="form-control" id="lastName" required [(ngModel)]="employee.lastName" name="lastName">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="text" class="form-control" id="emailId" required [(ngModel)]="employee.emailId" name="emailId">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="select" class="form-control" id="statut" required [(ngModel)]="employee.statut" name="statut">
+          </div>
+          
+          <div class="col-md-1">
+            <input type="text" class="form-control" id="type" required [(ngModel)]="employee.type" name="type">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="number" class="form-control" id="valeur1" required [(ngModel)]="employee.valeur1" name="valeur1">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="number" class="form-control" id="valeur2" required [(ngModel)]="employee.valeur2" name="valeur2">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="number" class="form-control" id="licence" required [(ngModel)]="employee.licence" name="licence">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="text" class="form-control" id="version" required [(ngModel)]="employee.version" name="version">
+          </div>
+      
+          <div class="col-md-1">
+            <input type="text" class="form-control" id="site" required [(ngModel)]="employee.site" name="site">
+          </div>
+          <hr>
+          <hr>
+          <hr>
+
+          <div class= "center">
+            <button type="submit" class="btn btn-success">Valider</button>
+            <p>..........</p>
+            <button (click)="gotoList()" type="button" class="btn btn-danger">Annuler</button>
+    
+          </div>
+        </form> 
+      </div>
+     <hr>
+      
+      
+      
+      <div [hidden]="!submitted">
+        <h4>You submitted successfully!</h4>
+        <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+      </div>
+  </div>
+
+

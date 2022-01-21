@@ -1,14 +1,15 @@
 <div class="center">
-  <ul class="nav nav-tabs" role="tablist">
-<li class="nav-item">
-   <a routerLink="/employees" class="nav-link" data-toggle="tab" routerLinkActive="active">Etape 1</a>
-</li>
-<li class="nav-item">
-   <a routerLink="/graph" class="nav-link" data-toggle="tab" routerLinkActive="active">Etape 2</a>
-</li>
-</ul>
+    <ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+     <a routerLink="/employees" class="nav-link" data-toggle="tab" routerLinkActive="active">Etape 1</a>
+  </li>
+  <li class="nav-item">
+     <a routerLink="/graph" class="nav-link" data-toggle="tab" routerLinkActive="active">Etape 2</a>
+  </li>
+  </ul>
 </div>
-<hr>
+  <hr>
+  
 
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -28,7 +29,6 @@
             <th>Numéro Série/license</th>
             <th>Version</th>
             <th>Site</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -43,27 +43,23 @@
             <td>{{employee.licence}}</td>
             <td>{{employee.version}}</td>
             <td>{{employee.site}}</td>
-            <td>
-               <button (click)="deleteEmployee(employee.id)" class="btn btn-danger">
-                  <span class="oi oi-trash"></span>
-               </button>
-                <button (click)="updateEmployee(employee.id)" class="btn btn-info" style="margin-left: 4px">
-                  <span class="oi oi-pencil"></span>
-                </button>
-                <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 4px">
-                  <span class="oi oi-list"></span>
-                </button>
-            </td>
+           
           </tr>
         </tbody>
       </table>
-      <button style="font-size:24px">
+      
+    </div>
+</div>
+<hr>
 
-        <a routerLink="/add" class="nav-link" data-toggle="tab" routerLinkActive="active">        
-          <span class="oi oi-plus"></span>
-        </a>
-      </button>    
-  </div>
-
-
- 
+<div id="main-head" style="text-align:center">
+  <form >
+    <label for="cars">Statut:</label>
+    <select name="cars" id="cars">
+      <option click ="reloadData(0)" value="deploye">deploye</option>
+      <option click ="reloadData(1)" value="en cours">en cours</option>
+      <option click ="reloadData(2)" value="xxx">xxx</option>
+    </select>
+  </form>
+  <div id="container"></div>
+</div>

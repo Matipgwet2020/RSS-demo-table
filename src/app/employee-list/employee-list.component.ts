@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class EmployeeListComponent implements OnInit {
   employees: Observable<Employee[]>;
+  employee: Employee = new Employee();
+  submitted = false;
 
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
@@ -41,5 +43,27 @@ export class EmployeeListComponent implements OnInit {
   updateEmployee(id: number){
     this.router.navigate(['update', id]);
   }
+
+  newEmployee(): void {
+    this.submitted = false;
+    this.employee = new Employee();
+  }
+
+  save() {
+    this.employeeService.createEmployee(this.employee)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.employee = new Employee();
+    this.gotoList();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.save();    
+  }
+
+  gotoList() {
+    this.router.navigate(['/employees']);
+  }
+  
 
 }
